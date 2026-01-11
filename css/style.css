@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #0e0e0e;
+  color: #eaeaea;
+  margin: 0;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #4caf50;
+}
+
+a {
+  color: #4caf50;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0;
+}
+
+button {
+  background: #4caf50;
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  background: #1c1c1c;
+  color: #fff;
+  border: 1px solid #333;
+}
