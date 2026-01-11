@@ -1,18 +1,39 @@
-function getSession() {
-  return JSON.parse(localStorage.getItem("tradeos_session")) || {
-    active: false,
-    trades: 0
-  };
-}
-
-function saveSession(session) {
-  localStorage.setItem("tradeos_session", JSON.stringify(session));
-}
+// TradeOS Global State
+let tradeOS = {
+  sessionActive: false,
+  sessionStart: null,
+  sessionEnd: null
+};
 
 function startSession() {
-  saveSession({ active: true, trades: 0 });
+  if (tradeOS.sessionActive) {
+    alert("Session already active.");
+    return;
+  }
+
+  tradeOS.sessionActive = true;
+  tradeOS.sessionStart = new Date().toISOString();
+  tradeOS.sessionEnd = null;
+
+  localStorage.setItem("tradeOS", JSON.stringify(tradeOS));
+  alert("Trading session started.");
 }
 
 function endSession() {
-  localStorage.removeItem("tradeos_session");
+  if (!tradeOS.sessionActive) {
+    alert("No active session.");
+    return;
+  }
+
+  tradeOS.sessionActive = false;
+  tradeOS.sessionEnd = new Date().toISOString();
+
+  localStorage.setItem("tradeOS", JSON.stringify(tradeOS));
+  alert("Trading session ended.");
+}
+
+// Load session on page refresh
+const savedState = localStorage.getItem("tradeOS");
+if (savedState) {
+  tradeOS = JSON.parse(savedState);
 }
