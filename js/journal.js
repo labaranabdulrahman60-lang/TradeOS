@@ -1,24 +1,39 @@
 // TradeOS Journal Logic
 
 function saveTrade() {
-  if (!tradeOS.sessionActive) {
-    alert("Start a trading session first.");
+  const setup = document.getElementById("setup").value;
+  const entry = document.getElementById("entry").value;
+  const stop = document.getElementById("stop").value;
+  const target = document.getElementById("target").value;
+  const emotion = document.getElementById("emotion").value;
+
+  if (!setup || !entry || !stop || !target) {
+    document.getElementById("status").innerText =
+      "❌ Please fill in all required fields.";
     return;
   }
 
   const trade = {
-    pair: document.getElementById("pair").value,
-    direction: document.getElementById("direction").value,
-    result: document.getElementById("result").value,
-    notes: document.getElementById("notes").value,
-    time: new Date().toISOString()
+    setup,
+    entry,
+    stop,
+    target,
+    emotion,
+    timestamp: new Date().toISOString()
   };
 
-  let journal = JSON.parse(localStorage.getItem("tradeJournal")) || [];
-  journal.push(trade);
+  let trades = JSON.parse(localStorage.getItem("tradeOS_trades")) || [];
+  trades.push(trade);
 
-  localStorage.setItem("tradeJournal", JSON.stringify(journal));
+  localStorage.setItem("tradeOS_trades", JSON.stringify(trades));
 
-  alert("Trade saved.");
-  document.getElementById("tradeForm").reset();
+  document.getElementById("status").innerText =
+    "✅ Trade saved successfully.";
+
+  // Reset form
+  document.getElementById("setup").value = "";
+  document.getElementById("entry").value = "";
+  document.getElementById("stop").value = "";
+  document.getElementById("target").value = "";
+  document.getElementById("emotion").value = "Calm";
 }
