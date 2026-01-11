@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pre-Trade Filter | TradeOS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <h2>Pre-Trade Filter</h2>
+  <p>All conditions must be met before trading.</p>
+
+  <label>
+    <input type="checkbox" id="rulePlan">
+    Trade is in my plan
+  </label><br><br>
+
+  <label>
+    <input type="checkbox" id="ruleRisk">
+    Risk is clearly defined
+  </label><br><br>
+
+  <label>
+    <input type="checkbox" id="ruleEmotion">
+    I am emotionally neutral
+  </label><br><br>
+
+  <button onclick="evaluatePreTrade()">Evaluate Trade</button>
+
+  <p id="result"></p>
+
+  <a href="index.html">← Back to Dashboard</a>
+
+  <script src="js/state.js"></script>
+  <script src="js/pretrade.js"></script>
+</body>
+</html>
