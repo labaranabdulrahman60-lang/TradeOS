@@ -1,51 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>TradeOS — Journal</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<h1>Trade Journal</h1>
-<p>Log every executed trade. No exceptions.</p>
+  <h1>Trade Journal</h1>
+  <p>Log every executed trade. No exceptions.</p>
 
-<label>
-  Trade Idea / Setup:
+  <label>
+    Trade Idea / Setup:
+    <br>
+    <textarea id="setup" rows="4"></textarea>
+  </label>
+  <br><br>
+
+  <label>
+    Entry Price:
+    <input type="number" id="entry">
+  </label>
+  <br><br>
+
+  <label>
+    Stop Loss:
+    <input type="number" id="stop">
+  </label>
+  <br><br>
+
+  <label>
+    Target:
+    <input type="number" id="target">
+  </label>
+  <br><br>
+
+  <label>
+    Emotional State:
+    <select id="emotion">
+      <option value="Calm">Calm</option>
+      <option value="Anxious">Anxious</option>
+      <option value="FOMO">FOMO</option>
+      <option value="Revenge">Revenge</option>
+    </select>
+  </label>
+  <br><br>
+
+  <button onclick="saveTrade()">Save Trade</button>
+
+  <p id="status"></p>
+
   <br>
-  <textarea id="setup" rows="4"></textarea>
-</label><br><br>
+  <a href="index.html">← Back to Dashboard</a>
 
-<label>
-  Entry Price:
-  <input type="number" id="entry">
-</label><br><br>
-
-<label>
-  Stop Loss:
-  <input type="number" id="stop">
-</label><br><br>
-
-<label>
-  Target:
-  <input type="number" id="target">
-</label><br><br>
-
-<label>
-  Emotional State:
-  <select id="emotion">
-    <option>Calm</option>
-    <option>Anxious</option>
-    <option>FOMO</option>
-    <option>Revenge</option>
-  </select>
-</label><br><br>
-
-<button onclick="saveTrade()">Save Trade</button>
-
-<p id="status"></p>
-
-<script src="js/state.js"></script>
-<script src="js/journal.js"></script>
+  <!-- SCRIPTS: ALWAYS AT THE BOTTOM -->
+  <script src="js/state.js"></script>
+  <script src="js/journal.js"></script>
 
 </body>
 </html>
